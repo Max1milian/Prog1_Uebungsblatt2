@@ -25,6 +25,11 @@ int sumIntArray(int* samples, int n){
 	}
 	return sum;
 }
+
+void siedlerWuerfel(){
+	char* wuerfel1[] = {"Lehm", "Holz", "Schaf", "Erz", "Getreide", "Gold" };
+	char* wuerfel2[] = {"Sonne", "Muehle", "Ritter", "Fragezeichen", "Raeuber", "Raeuber"};
+}
 int main(int argc, char *argv[])
 {
 	
