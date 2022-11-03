@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 int min(int* samples, int n){
 	return samples[0];
@@ -14,7 +15,7 @@ float mean(int* samples, int n){
 }
 
 void printIntArray(int* samples, int n){
-	for (int i = n; n >=0; --i) {
+	for (int i = n; i >=0; --i) {
 		printf("number: %i\n", samples[i]);	
 	}
 }
@@ -27,10 +28,16 @@ int sumIntArray(int* samples, int n){
 }
 
 void siedlerWuerfel(){
+	srand(time(NULL));
+	int Wurf1 = rand() % 6;
+	int Wurf2 = rand() % 7;
 	char* wuerfel1[] = {"Lehm", "Holz", "Schaf", "Erz", "Getreide", "Gold" };
 	char* wuerfel2[] = {"Sonne", "Muehle", "Ritter", "Fragezeichen", "Raeuber", "Raeuber"};
+	printf("erster Wuerfel: %s\n",wuerfel1[Wurf1]);
+	printf("zweiter Wuerfel: %s\n", wuerfel2[Wurf2]);
 }
-int main(int argc, char *argv[])
+
+int main()
 {
 	
 	return 0;
