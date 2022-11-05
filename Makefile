@@ -1,4 +1,5 @@
-CC = gcc
-CFLAGS = -std=c11 -Wall -Wextra -Werror -pedantic -m64
+CC = clang
+CFLAGS = -std=c11 -m64 -o
+CEXTRAFLAGS = -Wall -Wextra -Werror -pedantic -g
 all: main.c 
-	$(CC) $(CFLAGS)  main.c -o main
+	$(CC) $(CEXTRAFLAGS) $(CFLAGS) main main.c 
