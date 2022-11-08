@@ -2,16 +2,34 @@
 #include <stdlib.h>
 #include <time.h>
 
-int min(int* samples){
-	return samples[0];
+int min(int* samples, int n){
+	int result = 0;
+	for (int i = 0; i < n; ++i) {
+		if (result > *(samples + i)) { //position im Array
+			result = *(samples + i);
+		}
+	}
+	return result;
 }
 
 int max(int* samples, int n){
-	return samples[n - 1];
+	int result = 0;
+
+	for (int i = 0; i < n; ++i) {
+		if (result < *(samples + i)) { //position im Array
+			result = *(samples + i);
+		}
+	}
+	return result;
+
 }
 
 float mean(int* samples, int n){
-	return (float)samples[(n - 1) / 2];
+	float result = 0.0f; 
+	for (int i = 0; i < n; ++i) {
+		result += *(samples + i);//direkter zugriff auf die Adresse weil er int nicht in float umwandeln will :(
+	}
+	return result;
 }
 
 void printIntArray(int* samples, int n){
@@ -35,7 +53,7 @@ void siedlerWuerfel(){
 	int Wurf2 = rand() % 6;
 	char* wuerfel1[] = {"Lehm", "Holz", "Schaf", "Erz", "Getreide", "Gold" };
 	char* wuerfel2[] = {"Sonne", "Muehle", "Ritter", "Fragezeichen", "Raeuber", "Raeuber"};
-	printf("erster Wuerfel: %s\n",wuerfel1[Wurf1]);
+	printf("erster Wuerfel: %s\n", wuerfel1[Wurf1]);
 	printf("zweiter Wuerfel: %s\n", wuerfel2[Wurf2]);
 	printf("weiterer wurf?: ");
 	scanf("%1i", &antwort);
@@ -50,7 +68,7 @@ void muenzAutomat()
 {
 	float input = 0;
 	printf("Eingabe: ");
-	scanf("%5f", &input);
+	scanf("%6f", &input);
 	input *= 100;//konvertierung in cents
 		     
 	int maxCoins = 100;
@@ -66,32 +84,32 @@ void muenzAutomat()
 		for (int i = 0; i < 8; i++)
 		{
 
-			int count = 0;
+			int counter = 0;
 
-			while ( count < maxCoins && (input - coins[i] >= 0) )
+			while ( counter < maxCoins && (input - coins[i] >= 0) )
 			{
 
 				input -= coins[i];
 
 				output[i]++;
 
-				count++;
+				counter++;
 			}
 		}
 
 		for (int i = 0; i < 8; i++)
 		{
-			printf("Output: %3.2f: %d \n", (coins[i] / 100.0), output[i]);
+			printf("Ausgabe: %3.2f: %d \n", (coins[i] / 100.0), output[i]);
 			checkSolution += output[i] * coins[i];
 			coinCount += output[i];
 		}
 
 		if (checkSolution != inputBackup)
 		{
-			printf("End: %d != %d \n", checkSolution, inputBackup);
+			printf("Ende: %d != %d \n", checkSolution, inputBackup);
 		}
 
-		printf("END with %d Coins! \n", coinCount);
+		printf("ENDE mit %d Muenzen! \n", coinCount);
 
 	} else {
 
@@ -102,5 +120,6 @@ void muenzAutomat()
 }
 int main()
 {
+	
 	return 0;
 }
