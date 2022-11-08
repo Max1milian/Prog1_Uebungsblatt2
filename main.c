@@ -86,7 +86,6 @@ void nickelback() {
 
 
 	int eingabe_cent = eingabe * 100;
-	// printf("%i", eingabe_cent);
 
 	while (eingabe_cent > 0) {
 		if (eingabe_cent >= 200 && muenze_e2 < 100) {
