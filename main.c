@@ -80,6 +80,7 @@ void nickelback() {
 		scanf("%6f", &eingabe);
 		if (eingabe <= 0.00 || eingabe > 200.00) {
 			printf("Kein korrekter Betrag eingegeben. Bitte noch einmal wiederhohlen. \n");
+			nickelback();
 		}
 	}
 
